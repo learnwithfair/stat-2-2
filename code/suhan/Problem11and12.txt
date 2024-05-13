@@ -1,0 +1,38 @@
+########## Non Parametric Test  ############
+#### Median test korte bolle non-parametric test hobe
+(120, 115, 94, 118, 111, 102, 102, 131, 104, 107, 115, 139, 115, 113, 114, 105, 115, 134, 
+109, 109, 93, 118, 109, 106, 125)
+
+To check whether median is 110 or not.
+                              ######## Signed test #########
+
+x<-c(120, 115, 94, 118, 111, 102, 102, 131, 104, 107, 115, 139, 115, 113, 114, 105, 115, 134, 
+109, 109, 93, 118, 109, 106, 125)
+
+Ho: median=110
+md=110
+y<-sum(x>md)
+n<-sum(x!=md)
+p.value<-1-pbinom(y-1,n,0.5)   ##P=0.345        ##y-1=number of success, n=total number of probaility,0.5= 110 asar probability
+alpha=0.05
+
+#### Since P>alpha, hence Ho is accepted.
+
+			
+			######## Wilcoxon signed test ####### 
+### Ei test 1ta sample thakle korte hobe
+
+x<-c(120, 115, 94, 118, 111, 102, 102, 131, 104, 107, 115, 139, 115, 113, 114, 105, 115, 134, 
+109, 109, 93, 118, 109, 106, 125)
+
+wilcox.test(x, mu=110, exact=FALSE, correct=TRUE, alternative="two.sided")
+
+
+			######### Wilcoxon ranked sum test #######
+### Ei test 2ta sample thakle korte hobe
+
+x1<-c(155,165,170,190,220,250,250)
+x2<-c(300,355,360,360,360,400,400,400)
+wilcox.test(x1,x2, exact=FALSE, correct=TRUE, alternative="two.sided")
+
+### Since Ho is rejected, hence two population median are not same.

@@ -1,0 +1,20 @@
+######## Problem9 ####One variance test#####
+x1<-c(155,165,170,190,220,250,250)
+sigma2 = 160
+mu = 100
+df = length(x1)
+chisquare<-sum(x1-mu)^2/sigma2   ##chis_cal = 
+p.value<-2*min(pchisq(chisquare,df),1-pchisq(chisquare,df))  ##p.value=0
+p.value2<- 1-pchisq(chisquare,df)
+p.value3<-pchisq(chisquare,df) 
+### Since p.value<alpha.... Ho is rejceted.
+
+
+	###################### Myself According to book ###################
+x1<-c(160,172,121,144,100,108,175,200,105,95,102)
+sigma2 = 1500
+n = length(x1)
+df = length(x1)
+s2 = var(x1)
+chisquare<-((n-1)*s2)/sigma2  ##chis_cal = 9.09
+p.value<-2*min(pchisq(chisquare,df),1-pchisq(chisquare,df))  ##p.value=.777

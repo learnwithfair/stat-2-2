@@ -1,0 +1,37 @@
+############### Problem5 ###############
+
+In order to find out whether children with chronic diarrhea have the same average hemoglobin 
+level(Hb) that is normally seen in healthy children in the same area, a random sample of 10 children 
+with chronic diarrhea are selected, and their Hb levels <g/dl) are obtained as follows: 12.3, 11.4, 
+14,2, 15.3, 14.8, 13.8, 11.1,15.1,15.8,13.2 
+another random sample of 12 children with chronic diarrhea are 11.1, 17.2, 13.4, 15.2, 14.1, 13.0, 
+12.5, 11.5, 12.7, 14.5, 15.3, 14.0. 
+Is there any difference in the mean Hb label between the two groups of children??? 
+
+
+x1<-c(12.3, 11.4,14,2, 15.3, 14.8, 13.8, 11.1,15.1,15.8,13.2)
+x2<-c(11.1, 17.2, 13.4, 15.2, 14.1, 13.0,12.5, 11.5, 12.7, 14.5, 15.3, 14.0)
+
+
+boxplot(list(First_sample=x1, Second_sample=x2), col="gray")
+
+par(mfrow=c(1,2))
+qqnorm(x1,main="qq plot of First_sample")
+qqline(x1)
+qqnorm(x2,main="qq plot of Second_sample")
+qqline(x2)
+
+
+n1<-length(x1); n2<-length(x2)
+
+x1.bar<-mean(x1); x2.bar<-mean(x2)
+x1.var<-var(x1); x2.var<-var(x2)
+sp<-((n1-1)*x1.var+(n2-1)*x2.var)/(n1+n2-2)
+t<-(x1.bar-x2.bar)/sqrt(sp*(1/n1+1/n2))  #-0.89
+alpha = 0.05
+
+t.tab<-qt(alpha/2, n1+n2-2)  #-2.08
+
+
+###Since t>t.tab, hence two mean are equal
+

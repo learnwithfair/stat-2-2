@@ -1,0 +1,14 @@
+####### Problem10 ####Two variance test#####
+x1<-c(155,165,170,190,220,250,250)
+x2<-c(300,355,360,360,360,400,400,400)
+x1.var<-var(x1)
+x2.var<-var(x2)
+
+df1<-length(x1)-1
+df2<-length(x2)-1
+
+F.ratio<-x1.var/x2.var  ###F = 1.40
+
+pvalue.f<-2*min(pf(F.ratio, df1,df2),1-pf(F.ratio,df1,df2)) ##p=0.665
+###Ho is accepted. Since p<F
+var.test(x1,x2)  ###To check  whether whole information is right or wrong

@@ -1,0 +1,87 @@
+################ Problem1 #################### 
+
+Find out the point estimate of the population mean and interval estimate of the population mean. 
+Where 30 students quiz test marks is 
+(2,4,3,23,25,27,28,13,15,16,20,14,35,33,32,21,35,40,42,22,33,13,17,20,25,29,27,40,38,31), total 
+marks 50. Here polulaion size N=30 and sample size n=10. 
+also illustrate the sample size determination, sampling distribution for mean and check the 
+unbiasness of the population mean. 
+
+
+
+IQ<-c(2,4,3,23,25,27,28,13,15,16,20,14,35,33,32,21,35,40,42,22,33,13,17,20,25,29,27,40,38,31)
+mean(IQ)   ##population mean
+var(IQ)
+length(IQ)
+sigma<-sd(IQ)
+sigma
+
+###check normality
+qqnorm(IQ)
+qqline(IQ)
+
+set.seed(1246)
+X<-sample(IQ,10, replace=TRUE)
+mean(X)  #point estimate of mean 21.6
+
+
+##Interval estimation
+qnorm(0.025,0,1)  ##In normation distribution mean=0 and variance=1
+
+##lower class interval
+21.6-(1.96*sigma)/sqrt(10)  ##14.77
+
+##upper class interval
+21.6+(1.96*sigma)/sqrt(10)  ##28.43
+
+95% confidence interval for population mean is(14.77,28.43)
+
+### Sample size determination for estimation  ###(eta exam e amader dibena)###
+###n = (2*Z*sigma/2)^2
+Z = 1.96
+sigma = 11.01
+n = (2*Z*sigma/2)^2
+
+
+					###Sampling distribution of mean###
+
+##number of sample can be drawn
+choose(30,10)
+
+nsample<-rep(0,300000)   ###rep=repeated
+for (i in 1:300000){
+	nsample[i]<-(mean(sample(IQ, 10, replace=TRUE)))
+}
+hist(nsample)
+mean(nsample)    #Expected value E(x ber)= .......
+
+Bias=mean(nsample)-mean(IQ)
+
+##Comment: Sampling mean is unbiased estimator of population mean
+
+##Since the value of bias is 0. So we can say that population mean is unbiased estimator of sample mean.
+####Exam e mean,median,mode jekuno tar jonno bolte pare...###
+
+					#### Sampling distribution for median####
+choose(30,10)
+nsample2<-rep(0,300000)
+for (i in 1:300000){
+nsample2[i]<-(median(sample(IQ,10,replace=TRUE)))
+}
+populationMeidan<-median(IQ)
+sampleMedian<-median(nsample2)
+bias = sampleMedian - populationMedian
+bias
+##Comment: Sampling median is a unbiased estimator of population median
+
+						##### Efficiency check#####
+
+#mean
+L<-length(nsample)
+var<-sum((nsample-populationMean)^2)/L   ##11.74
+
+#median
+L2<-length(nsample2)
+var2<-sum((nsample2-populationMedian)^2)/L #19.88
+
+#Comment : Varience of mean is 11.74<19.88 which is varience of median. so mean is more efficient than median		

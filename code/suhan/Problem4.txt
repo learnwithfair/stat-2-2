@@ -1,0 +1,29 @@
+################ Problem4 ###############
+
+In order to find out whether children with chronic diarrhea have the same average hemoglobin 
+level(Hb) that is normally seen in healthy children in the same area, a random sample of 10 children 
+with chronic diarrhea are selected, and their Hb levels <g/dl) are obtained as follows: 12.3, 11.4, 
+14.2, 15.3, 14.8, 13.8, 11.1,15.1,15.8,13.2 
+Do the data provide sufficient evidence to indicate that the mean Hb level for children with chronic 
+diarrhea is less than the normal value of 14.6 (g/dl)? Test at 0.01 level of significance. Draw a 
+boxplot and normal plot for this data and comments. 
+
+#H1: mu<14.6
+mu<-14.6
+data<-c(12.3, 11.4,14.2, 15.3, 14.8, 13.8, 11.1,15.1,15.8,13.2)
+n<-length(data)
+x.bar<-mean(data)
+sd.est<-sd(data)
+t<-(x.bar-mu)/(sd.est/sqrt(n))  #tcal= -1.72
+
+tab<-qt(0.01,n-1)  ##ttab = -2.82   here, (n-1) is a degrees of freedom
+pvalue.t<-pt(t,df=n-1)  #0.06 where alpha 0.01
+
+###Since calculated t falls on accepted region. We may accpet null hypothesis.
+
+t.test(data, mu=14.6, conf.level=0.99, alternative="less")
+
+boxplot(data,ylab="Hb lebel", col="green")
+
+qqnorm(data, main="Normal Q-Q plot of Hb lebel")
+qqline(data)

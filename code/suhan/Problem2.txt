@@ -1,0 +1,39 @@
+ ################# Problem2 #################
+
+Two dice rolled, S is the sum of both faces, Find the expectation of S, E(s) and variance of S, V(s).
+Plot the distribution of S and dice D. 
+
+
+#Vector of outcomes
+S<- 2:12
+A<- c(1:6, 5:1)
+
+#Vector of probabilities
+PS <- c(1:6, 5:1)/36
+
+#Expectation of S
+ES <-sum(S * PS) 
+
+#Variance of S 
+VarS <-sum((S- c(ES))^2 *PS)
+
+#Plot the distribution of S
+
+barplot(PS,
+ylim = c(0,0.2),
+xlab="S",
+ylab="Probability",
+col="steelblue",
+space= 0,
+main="Sum of two Dice Rolls")
+
+##Plot the distribution of D
+
+probability<-rep(1/6,6)
+names(probability)<-1:6
+barplot(probability,
+ylim= c(0,0.2),
+xlab="D",
+col="steelblue",
+space=0,
+main="Outcome of a single Dice Roll")

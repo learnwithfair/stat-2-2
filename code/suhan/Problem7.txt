@@ -1,0 +1,6 @@
+################## Problem7 ###############
+#Ho: There is no association between smoking and heart disease
+M<-matrix(c(55,16,23,32),ncol=2, byrow=TRUE)
+chisq.test(M)
+
+p-value=0.000095, alpha= 0.05 #Since p-value<alpha,hence Reject Ho

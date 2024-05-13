@@ -1,0 +1,38 @@
+###################### Problem3 ##################
+
+A herd of 1500 steer was fed a special high protein gain for a month. A random sample of 29 was 
+weighted and had gained an average of 6.7 pounds. If the sd of weight gain for the entire herd is 7.1. 
+Test the hypothsis at 5% level of significance that the average weight gain per steer for the month 
+was more than 5 pounds. Also comments on the test using the p-value. Create the confidence 
+interval. 
+
+
+H0:mu<=5
+H1:mu>5
+x.bar<-6.7
+mu<-5
+sd<-7.1
+n<-29
+
+Zcal<-(x.bar-mu)/(sd/sqrt(n))  #1.289
+alpha=0.05
+
+Ztab<-qnorm(0.05,lower.tail=FALSE)  #1.64
+##Comments: Ho is Accepted, Ztab>Zcal
+
+#Using P-value
+pvalue<-pnorm(Zcal,lower.tail=FALSE)  ##pvalue=0.098
+##Since pvalue=0.098>alpha, then Ho is accepted.
+
+
+####Ekhan theke question er test er sathe kuno mil nai..Just confidence interval ber korar jonno evabe kora hoise...
+
+H1:mu not equal 5
+Ztab1<-qnorm(0.025)  #-1.96
+Ztab2<-qnorm(0.975)  ##(1-.025)=0.975    ##Ztab2=1.96
+
+########p-value
+####p.value<-2*pnorm(Z, lower.tail=FALSE)  #0.19   ####
+
+##95% confidence Interval for mu
+CI<-c(x.bar+Ztab1*sd/sqrt(n),x.bar+Ztab2*sd/sqrt(n))
