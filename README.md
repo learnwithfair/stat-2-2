@@ -1,4 +1,4 @@
-# SAMPLING-DISTRIBUTION-&-hYPOTHESIS-TESTING
+# SAMPLING-DISTRIBUTION-&-HYPOTHESIS-TESTING
 
 [![Youtube][youtube-shield]][youtube-url]
 [![Facebook][facebook-shield]][facebook-url]
@@ -17,12 +17,10 @@ Thanks for visiting my GitHub account!
 
 ## Project Features
 
-|                          |
-| :----------------------: |
-|         Index          |
-| ![roadmap](images/1.jpg) |
-| ![roadmap](images/2.jpg) |
-| ![roadmap](images/3.jpg) |
+|                          |                          |
+| :----------------------: | :----------------------: |
+| ![roadmap](images/1.jpg) | ![roadmap](images/2.jpg) |
+| ![roadmap](images/3.jpg) |                          |
 
 ## Follow Me
 
